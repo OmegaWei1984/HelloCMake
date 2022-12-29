@@ -22,7 +22,7 @@ cmake -H. -Bbuild
 make .
 ```
 `-H` 指定了查找 CMakeLists.txt 的目录，`-B` 指定了生成目录。
-CMake 默认生成 Unix Makefile，然后通过 `make` 命令根据其来构建项目。 
+CMake 默认生成 Unix Makefile，然后通过 `make` 或者 `cmake --build .` 命令根据其来构建项目。 
 
 #### 1.2 切换生成器
 
