@@ -96,3 +96,5 @@ set_target_properties(message-static
 target_link_libraries(hello message-static)
 ```
 最终得到两个文件 libmessage-shared.so 和 libmessage-static.a
+
+### 1.4 用条件句控制编译
