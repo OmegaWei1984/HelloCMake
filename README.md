@@ -98,3 +98,21 @@ target_link_libraries(hello message-static)
 最终得到两个文件 libmessage-shared.so 和 libmessage-static.a
 
 ### 1.4 用条件句控制编译
+
+在 `if(<constant|variable>)` 中 `1`， `ON`， `YES`， `TRUE`， `Y` 以及非零的数为 `true`，`0`， `OFF`， `NO`， `FALSE`， `N`， `IGNORE`， `NOTFOUND`， 空字符串，后缀 `-NOTFOUND` 为 `false`。
+
+```camek
+if(<condition>)
+  <commands>
+elseif(<condition>) # optional block, can be repeated
+  <commands>
+else()              # optional block
+  <commands>
+endif()
+```
+同时还可以使用逻辑运算符 `NOT`、`AND`、`OR` 来丰富 if 中的条件。
+
+`list` 的子命令 `APPEND` 用于将元素加入 list 中。
+```cmake
+list(APPEND _sources Message.hpp Message.cpp)
+```
