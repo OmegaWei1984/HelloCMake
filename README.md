@@ -87,7 +87,7 @@ set_target_properties(message-static PROPERTIES OUTPUT_NAME "message")
 
 target_link_libraries(hello message-static)
 ```
-使用 `STATIC` 会得到 libmessage.a，使用 `SHARED` 会得到 libmessage.so，使用 `OBJECT` 则两者都不会产生。
+使用 `STATIC` 会得到 libmessage.a，使用 `SHARED` 会得到 libmessage.so，使用 `OBJECT` 两者都会产生。
 
 ### 1.4 用条件句控制编译
 
