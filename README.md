@@ -35,7 +35,8 @@ cd build
 cmake ..
 # 或者直接
 cmake -H. -Bbuild
-make .
+# 然后
+make
 ```
 `-H` 指定了查找 CMakeLists.txt 的目录，`-B` 指定了生成目录。
 CMake 默认生成 Unix Makefile，然后通过 `make` 或者 `cmake --build .` 命令根据其来构建项目。 
@@ -72,7 +73,7 @@ target_link_libraries(hello message)
 > 
 > OBJECT：可将给定add_library的列表中的源码编译到目标文件，不将它们归档到静态库中，也不能将它们链接到共享对象中。
 
-**⚠ todo 具体什么是对象库？作用是什么**
+**⚠todo 具体什么是对象库？作用是什么**
 
 创建静态库和共享库
 ```cmake
