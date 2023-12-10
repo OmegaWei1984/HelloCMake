@@ -1,5 +1,58 @@
-cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
-project(ch01 LANGUAGES CXX)
+cmake_minimum_required(VERSION 3.12...3.20)
+project(
+    example VERSION 1.0
+    DESCRIPTION "example"
+    LANGUAGES CXX)
+
+MESSAGE(STATUS "${VAR1}! CMake")
+set(VAR1 "hello")
+MESSAGE(STATUS "${VAR1}! CMake")
+
+set(CACHE_VAR "lalala" CACHE STRING "Comment")
+MESSAGE(STATUS "cache var ${CACHE_VAR}")
+
+set(foo "bar")
+set(bar "hello")
+MESSAGE(STATUS "I am ${foo}")
+MESSAGE(STATUS "${${foo}}")
+
+function(HELLO ARGV)
+    MESSAGE(STATUS "hello, ${ARGV}!")
+endfunction()
+
+hello("cmake")
+hello("c++" "c")
+
+function(HELLO_2)
+    cmake_parse_arguments(
+        ARGN_PREFIX
+        "FOO;FOO2"
+        "BAR;BAR2"
+        "LIST"
+        ${ARGN}
+    )
+    MESSAGE(STATUS ${ARGN_PREFIX_FOO} ${ARGN_PREFIX_FOO2})
+    MESSAGE(STATUS ${ARGN_PREFIX_BAR} ${ARGN_PREFIX_BAR2})
+    MESSAGE(STATUS ${ARGN_PREFIX_LIST})
+endfunction()
+
+hello_2(FOO BAR "bar1" BAR2 "bar2" LIST "hello" "cmake" "!")
+
+option(IS_HAHA "Haha or Wuuu?" TRUE)
+if (${IS_HAHA})
+    MESSAGE(STATUS "hahahahahahaha")
+else()
+    MESSAGE(STATUS "Wuuuuuuuuuuuuu")
+endif()
+
+include(CMakeDependentOption)
+
+cmake_dependent_option(HAS_JOKE "has a joke" TRUE "IS_HAHA" FALSE)
+if (${HAS_JOKE})
+    MESSAGE(STATUS "has a joke")
+endif()
+
+SET(MSG "lalalala hello")
 
 set(USE_LIBRARY ON)
 message(STATUS "Compile sources into a library? ${USE_LIBRARY}")
